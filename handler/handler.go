@@ -22,13 +22,10 @@ var (
 	getUserPostRe = regexp.MustCompile(`\/posts/users\/(\w+)$`)
 )
 
-//function coonects to MongoDB and returns pointers to two collections in the DB
 func ConnectDB() (*mongo.Collection, *mongo.Collection) {
 
-	// Set client options
 	clientOptions := options.Client().ApplyURI("mongodb://127.0.0.1:27017")
 
-	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 
 	if err != nil {
@@ -42,11 +39,8 @@ func ConnectDB() (*mongo.Collection, *mongo.Collection) {
 	return collection_1, collection_2
 }
 
-//collection variables
 var collection_1, collection_2 = ConnectDB()
 
-//function to create a user in the DB
-//POST request
 func CreateUserEndpoint(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
@@ -67,7 +61,6 @@ func CreateUserEndpoint(w http.ResponseWriter, r *http.Request) {
 
 }
 
-//function to get a user by its ID
 //GET request
 func GetUserByIDEndpoint(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -106,7 +99,6 @@ func CreatePostEndpoint(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(result)
 }
 
-//function to get a post by its ID
 //GET Request
 func GetPostByIDEndpoint(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -128,7 +120,6 @@ func GetPostByIDEndpoint(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(post)
 }
 
-//function to get all post for a particular user ID
 //GET request
 
 func GetUsersPostByIdEndpoint(w http.ResponseWriter, r *http.Request) {
