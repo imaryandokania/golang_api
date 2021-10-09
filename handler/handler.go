@@ -54,7 +54,7 @@ func CreateUserEndpoint(w http.ResponseWriter, r *http.Request) {
 
 	_ = json.NewDecoder(r.Body).Decode(&user)
 
-	key := "123456789012345678901234"
+	key := "757858757578578578587"
 	hashed_password := encrypt.Encrypt(key, user.Password)
 	user.Password = hashed_password
 
