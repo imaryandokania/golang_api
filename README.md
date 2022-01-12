@@ -1,4 +1,4 @@
 
-# Appointy Instagram API
+# Instagram API
 
 
